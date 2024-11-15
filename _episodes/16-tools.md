@@ -88,7 +88,8 @@ With the code to query the information is already available in the shell session
 > ## zsh
 > Add the following to your `$HOME/.bashrc`.
 > ~~~
-> precmd () { __git_ps1 "%n" ":%~$ " "|%s" }
+> setopt PROMPT_SUBST
+> PS1='[%n@%m %c$(__git_ps1 " (%s)")]\$ '
 > ~~~
 > This will show username, pipe, then various status string, followed by colon, cwd, dollar and SP, as your prompt.
 > {: .language-bash}
