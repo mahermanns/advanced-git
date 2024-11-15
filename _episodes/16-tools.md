@@ -65,10 +65,8 @@ you@computer:~$ curl https://raw.githubusercontent.com/git/git/refs/heads/master
 > ~~~
 > {: .language-bash}
 {: .solution}
-> ## fish, xonsh, etc.
->
-> You are lucky that these shells already have Git support fully integrated.
-{: .solution}
+
+Some shells, such as fish, xonsh, and others already have support for displaying Git repository information built-in.
 
 Now you have the infrastructure set up to augment the command prompt with desired information about your Git repository.
 
