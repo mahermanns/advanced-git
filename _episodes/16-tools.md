@@ -36,7 +36,7 @@ appropriate code snippet according to the shell you are running. If you are unsu
 you are using, try the following code to identify the shell you are running.
 
 ~~~
-[you@computer:~]$ basename $SHELL
+you@computer:~$ basename $SHELL
 bash
 ~~~
 {: .language-bash}
@@ -46,7 +46,7 @@ Github (i.e., the repository hosting the source code for Git itself) also provid
 to query different information. You can download it to your home directory with the following commands.
 
 ~~~
-[you@computer:~]$ curl https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-prompt.sh -o $HOME/.git-prompt.sh
+you@computer:~$ curl https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-prompt.sh -o $HOME/.git-prompt.sh
 ~~~
 {: .language-bash}
 
