@@ -7,7 +7,9 @@ questions:
 objectives:
 - "Improve your command prompt for working with Git"
 keypoints:
-- "Use available prompt definitions to show repository summary at a glance."
+- "Use available scripts for common shell environments."
+- "Indicate changes stashed, pending, or commited to the local working copy."
+- "Indicate current branch name to aid in multi-branch workflows."
 ---
 
 When working with the command prompt in Git, it may prove helpful to keep
