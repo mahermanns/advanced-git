@@ -97,5 +97,86 @@ With the code to query the information is already available in the shell session
 > {: .language-bash}
 {: .solution}
 
+## Tweaking the information shown
+
+Using the `git-prompt.sh` script you can now tweak the information shown in the prompt by setting specific environment variables.
+
+### Indicating unstaged and uncommited changes in the working copy
+
+By setting the environment variable `GIT_PS1_SHOWDIRTYSTATE` to a non-empty value, the prompt will indicate modified files in the working copy with an `*` character.
+
+~~~
+user@computer:my_repo (main *)> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   a_file.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+user@computer:my_repo (main *)$
+~~~
+{: .language-bash}
+
+### Indicating untracked files in the working copy
+
+By setting the environment variable `GIT_PS1_SHOWUNTRACKEDFILES` to a non-empty value, the prompt will indicate the presence of untracked files
+in the working copy with a `%` character next to the branch name.
+
+~~~
+user@computer:my_repo (main %)> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        untracked.pdf
+
+no changes added to commit (use "git add" and/or "git commit -a")
+user@computer:my_repo (main %)>
+~~~
+{: .language-bash}
+
+### Indicating a stash in the working copy
+
+Git supports saving modifications to the working copy in a so-called stash that can later be reapplied to the working copy.
+By setting the environment variable `GIT_PS1_SHOWSTASHSTATE` to a nonempty value, the prompt will indicate wheter something is stashed,
+with a `$` next to the branch name.
+
+~~~
+you@computer:my_repo (main $)> git stash
+Saved working directory and index state WIP on main: 33528c7 Added report
+you@computer:my_repo (main $)> git stash clear
+you@computer:my_repo (main)>
+~~~
+{: .language-bash}
+
+### Indicating the name of and difference to the upstream repository
+
+The environment variable `GIT_PS1_SHOWUPSTREAM` can be set to a space-seperated list of options to show relation of the local working copy to an upstream repository. For basic use, you can select between the following options.
+
+- **verbose** show the number of commits behind (-) or ahead (+) if not equal (=) to upstream.
+- **name** show the abbreviated name of the upstream repository
+- **auto** chooses a sensible set of information depending on the status of the working copy.
+
+~~~
+you@itc19060:my_repo (main *)> echo $GIT_PS1_SHOWUPSTREAM
+
+you@computer:my_repo (main *)> GIT_PS1_SHOWUPSTREAM="verbose"
+you@computer:my_repo (main *|u+3)> GIT_PS1_SHOWUPSTREAM="verbose name"
+you@computer:my_repo (main *|u+3 origin/main)> GIT_PS1_SHOWUPSTREAM="auto"
+you@computer:my_repo (main *>)>
+~~~
+{: .language-bash}
+
+> There are more options for advanced usage available. Check inside of `git-prompt.sh` for documentation.
+{: .callout}
+
+### Colorizing the output
+
+If the environment variable `GIT_PS1_SHOWCOLORHINTS` is set to any value, the Git-related part of the output in the prompt will be colorized.
+If the variable is not set, the output will not be colorized.
 
 {% include links.md %}
